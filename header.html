@@ -1,0 +1,76 @@
+<header class="header">
+  <div class="container">
+    <div class="columns is-gapless is-multiline is-mobile">
+      <div class="column is-12-mobile is-12-tablet is-3-desktop is-3-widescreen is-3-fullhd">
+        <div class="header__desktop__logo">
+          <a href="https://www.securit.biz/"><img src="{{ module.logo.src }}" alt="Logo Secure iT"></a>
+        </div>
+      </div>
+      <div class="column is-12-mobile is-12-tablet is-6-desktop is-6-widescreen is-6-fullhd">
+        {%- macro render_link_item(link,depth,looop)-%}
+        {%- if link != [] && link.label -%}
+        <li class="menu-item menu-depth-{{depth}}{% if link.activeBranch %} active-branch{% endif %}{% if link.activeNode %} active{% endif %}">
+          <a href="{{link.url if link.url else '#'}}">{{link.label}}</a>
+          {%- if link.children -%}
+          <label title="Toggle Drop-down" class="drop-icon" for="sm{{looop}}_{{depth}}"><i class="fas fa-angle-down"></i></label>
+          <input type="checkbox" id="sm{{looop}}_{{depth}}">
+          <ul class="sub-menu">
+            {% set depth = depth + 1%}
+            {%- for sublink in link.children -%}
+            {{render_link_item(sublink,depth,loop.index)}}
+            {%- endfor -%}
+          </ul>
+          {%- endif -%}
+        </li>
+        {%- endif -%}
+        {%- endmacro -%}
+
+        {% set menu = menu(module.menu_field , "site_root").children %}
+
+        <nav id="menu">
+          <label for="tm" id="toggle-menu"><img src="{{ module.logo.src }}" alt="Logo Secure IT"><span class="drop-icon"><i class="fas fa-bars"></i></span></label>
+          <input type="checkbox" id="tm">
+          <ul class="main-menu cf">
+
+            {% for link in menu %}   
+            {{render_link_item(link,1,loop.index)}}
+            {% endfor %}
+
+          </ul>
+        </nav>
+      </div>
+      <div class="column is-12-mobile is-12-tablet is-3-desktop is-3-widescreen is-3-fullhd">
+        <div class="tel">
+          <img src="https://f.hubspotusercontent30.net/hubfs/8812683/Folder%202021/ico-phone.png" alt="Secure IT">
+          <ul>
+            <li>
+              <span><a href="tel:+1864342-6891">+1 (864) 342-6891</a></span>
+            </li>
+            <li>
+              <label class="visit" for="Mon - Fri 8:00 am to 8:00 pm">
+                {% set href = module.link_field.url.href %}
+                {% if module.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" + href %}
+                {% endif %}
+                {% set rel = [] %}
+                {% if module.link_field.no_follow %}
+                {% do rel.append("nofollow") %}
+                {% endif %}
+                {% if module.link_field.open_in_new_tab %}
+                {% do rel.append("noopener") %}
+                {% endif %}
+                <a href="{{ href }}"
+                   {% if module.link_field.open_in_new_tab %}target="_blank"{% endif %} 
+                   {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+                   >
+                Visit our Dutch website
+                </a>
+            </label>
+          </li>
+        </ul>
+    </div>
+
+  </div>
+  </div>
+</div>
+</header>
