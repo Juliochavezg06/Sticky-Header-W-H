@@ -22,6 +22,6 @@ function updateColorHeader() {
     $('.header').css("background-color", header_color_static);
     //     $('.header').css("height", "85px");
     $('.header').css("box-shadow", "none");
-    $('.header').css("top", "60px");
+    $('.header').css("top", "0px");
   }
 }
