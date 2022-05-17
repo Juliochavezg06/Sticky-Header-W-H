@@ -9,11 +9,8 @@ header{
  
   
 }
-header > .container{
-  border-bottom: 1px solid #fff;
-}
 .header__desktop__logo img{
-  max-width: 150px;
+  max-width: 250px;
   padding: 10px;
 }
 #menu ul {
@@ -55,7 +52,6 @@ header > .container{
   line-height: 14px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  font-family: 'Exo', sans-serif;
 }
 #menu .sub-menu li a{
   color: #9CA6B6;
@@ -137,7 +133,6 @@ header > .container{
   color: #fff;
 }
 .visit a{
-  font-family: Exo;
   font-style: normal;
   font-weight: bold;
   font-size: 12px;
@@ -297,7 +292,6 @@ background: #409172!important;
 }
 
 .header .tel ul li span {
-  font-family: Exo;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
@@ -305,7 +299,6 @@ background: #409172!important;
   color: #FFFFFF;
 }
 .header .tel ul li span a{
-  font-family: Exo;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
@@ -317,7 +310,6 @@ background: #409172!important;
   color: #fff;
 }
 .header .tel ul li label {
-  font-family: Exo;
   font-style: normal;
   font-weight: bold;
   font-size: 12px;
